@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import Link from 'next/link'
 import './page.scss'
 import { getTotalCartAmount } from '@/redux/features/cartSlice'
 import { useDispatch } from 'react-redux'
@@ -10,17 +11,23 @@ import { products } from '../components/products'
 import { CartItem } from '../components/cartItem'
 export default function Cart() {
   const dispatch = useDispatch<AppDispatch>()
-  dispatch(getTotalCartAmount(null))
+  dispatch(getTotalCartAmount())
   const data = useAppSelector((state) => state.cartSliceReducer.value)
   const totalPrice = useAppSelector(state => state.cartSliceReducer.totalPrice);
+  if(!totalPrice) return(
+    <div className="cart checkout">
+      <h1 className="cart__h1">購物車中沒有任何商品。</h1>
+      <Link href="/"><button>繼續購物</button></Link>
+    </div>
+  )    
   return (
     <div className="cart">
       <div>
-        <h1>Your Cart Items</h1>
+        <h1 className="cart__h1">Your Cart Items</h1>
       </div>
       <div className="cart">
         {Object.keys(data).map((key: string) => {
-          if (data[key] !== 0) {
+          if (data[Number(key)] !== 0) {
             const product = products.find((item) => item.id === key);
             if (product) {
               return (
@@ -30,11 +37,10 @@ export default function Cart() {
           }
         })}
       </div>
-      page
       <div className="checkout">
-          <p> Subtotal: ${totalPrice}</p>
-          <button > Continue Shopping </button>
-        
+          <h2 className="cart__h2 "> Subtotal: ${totalPrice}</h2>
+          <Link href="/"><button>繼續購物</button></Link>
+          <Link href="/"><button>下單</button></Link>
         </div>
     </div>
 
