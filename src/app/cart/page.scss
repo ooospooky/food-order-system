@@ -43,3 +43,10 @@
   margin: 10px;
   cursor: pointer;
 }
+
+.countHandler{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  gap:1rem;
+}
