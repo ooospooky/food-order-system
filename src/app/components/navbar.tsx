@@ -11,12 +11,14 @@ export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: '#292929' }}>
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Toolbar  sx={{ display:"flex",justifyContent:"space-between" }}>
+          <Link href="/" >
+            <Typography variant="h6" component="div">
               Home
-          </Typography>
+            </Typography>
+          </Link>
           <Link href="/cart">
-          <Button color="inherit">Cart</Button>
+            <Button color="inherit">Cart</Button>
           </Link>
         </Toolbar>
       </AppBar>
