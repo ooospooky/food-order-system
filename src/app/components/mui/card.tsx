@@ -17,10 +17,10 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { src, name, id } = product
+  const { src, name, id, price } = product
 
   const dispatch = useDispatch<AppDispatch>()
-  const productAmount = useAppSelector((state) => state.cartSliceReducer.value[id]);
+  const productAmount = useAppSelector((state) => state.cartSliceReducer.value[Number(id)]);
   // console.log(productAmount);
   return (
     <Card sx={{ maxWidth: 345 }} >
@@ -32,7 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {name}
+          {name}  &nbsp; ${price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
