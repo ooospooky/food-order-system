@@ -19,11 +19,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers:{
     addToCart:(state,action:PayloadAction<any>)=>{
-      return( 
-        value:{
-          123:213
-        }
-      )
+      state.value[action.payload] +=1
     }
   }
 })
