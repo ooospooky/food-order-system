@@ -23,6 +23,9 @@ export const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<any>) => {
       state.value[action.payload] += 1
     },
+    removeFromCart:(state, action: PayloadAction<any>) => {
+      state.value[action.payload] -= 1
+    },
     getTotalCartAmount: (state, action: PayloadAction<any>) => {
       let totalAmount = 0;
       for (const key in state.value) {
@@ -36,5 +39,5 @@ export const cartSlice = createSlice({
   }
 })
 
-export const { addToCart,getTotalCartAmount } = cartSlice.actions;
+export const { addToCart, removeFromCart, getTotalCartAmount } = cartSlice.actions;
 export default cartSlice.reducer;
