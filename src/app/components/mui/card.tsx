@@ -7,12 +7,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { IProduct } from '../products';
+
+import { addToCart } from '@/redux/features/cartSlice'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/redux/store'
+import { useAppSelector } from '@/redux/store'
 interface ProductCardProps {
   product: IProduct;
 }
 
-export default function ProductCard({product}:ProductCardProps) {
-  const {src, name} = product
+export default function ProductCard({ product }: ProductCardProps) {
+  const { src, name, id } = product
+
+  const dispatch = useDispatch<AppDispatch>()
+  const productAmount = useAppSelector((state) => state.cartSliceReducer.value[id]);
+  // console.log(productAmount);
   return (
     <Card sx={{ maxWidth: 345 }} >
       <CardMedia
@@ -31,7 +40,7 @@ export default function ProductCard({product}:ProductCardProps) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">add</Button>
+        <Button size="small" onClick={() => dispatch(addToCart(id))}>Add To Cart {productAmount > 0 && <> ({productAmount})</>}</Button>
       </CardActions>
     </Card>
   );
