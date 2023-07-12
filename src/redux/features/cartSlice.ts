@@ -26,12 +26,12 @@ export const cartSlice = createSlice({
     removeFromCart:(state, action: PayloadAction<any>) => {
       state.value[action.payload] -= 1
     },
-    getTotalCartAmount: (state, action: PayloadAction<any>) => {
+    getTotalCartAmount: (state) => {
       let totalAmount = 0;
       for (const key in state.value) {
         if (state.value[key] !== 0) {
           const product = products.find((p) => p.id === key);
-            totalAmount += product.price * state.value[key];
+          if(product) totalAmount += product.price * state.value[key];
         }
       }
       state.totalPrice = totalAmount;
