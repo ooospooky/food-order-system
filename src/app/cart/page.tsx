@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import './page.scss'
-import { addToCart } from '@/redux/features/cartSlice'
+import { getTotalCartAmount } from '@/redux/features/cartSlice'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
 import { useAppSelector } from '@/redux/store'
@@ -9,8 +9,10 @@ import { useAppSelector } from '@/redux/store'
 import { products } from '../components/products'
 import { CartItem } from '../components/cartItem'
 export default function Cart() {
-  // const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>()
+  dispatch(getTotalCartAmount(null))
   const data = useAppSelector((state) => state.cartSliceReducer.value)
+  const totalPrice = useAppSelector(state => state.cartSliceReducer.totalPrice);
   return (
     <div className="cart">
       <div>
@@ -30,11 +32,9 @@ export default function Cart() {
       </div>
       page
       <div className="checkout">
-          <p> Subtotal: $</p>
+          <p> Subtotal: ${totalPrice}</p>
           <button > Continue Shopping </button>
         
-            {" "}
-            Checkout{" "}
         </div>
     </div>
 
