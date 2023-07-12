@@ -14,6 +14,30 @@ export default function Cart() {
   dispatch(getTotalCartAmount())
   const data = useAppSelector((state) => state.cartSliceReducer.value)
   const totalPrice = useAppSelector(state => state.cartSliceReducer.totalPrice);
+  const handleSubmit = ()=>{
+    
+    let order = {}
+    for(let key in data){
+      if(data[key] !== 0){
+        let product =  products.find((p)=>p.id === key);
+        console.log('p',product)
+        if(product) (order as any)[product.name] = data[key]
+      }
+    }
+    if(!localStorage.getItem('orderNumber')){
+      localStorage.setItem('orderNumber',JSON.stringify({resultNumber:1}));
+      localStorage.setItem('order1', JSON.stringify(order));
+    }else{
+      const {resultNumber}= localStorage.getItem('orderNumber');
+      localStorage.setItem('orderNumber',JSON.stringify({resultNumber:resultNumber+1}));
+      localStorage.setItem(`order${resultNumber+1}`, JSON.stringify(order));
+
+    }
+    
+    // localStorage.setItem('order', JSON.stringify(order));
+    const res= localStorage.getItem('order')
+    console.log(res)
+  }
   if(!totalPrice) return(
     <div className="cart checkout">
       <h1 className="cart__h1">購物車中沒有任何商品。</h1>
@@ -40,7 +64,7 @@ export default function Cart() {
       <div className="checkout">
           <h2 className="cart__h2 "> Subtotal: ${totalPrice}</h2>
           <Link href="/"><button>繼續購物</button></Link>
-          <Link href="/"><button>下單</button></Link>
+         <button onClick={handleSubmit}>下單</button>
         </div>
     </div>
 
