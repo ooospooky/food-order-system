@@ -1,6 +1,6 @@
 "use client";
 import * as React from 'react';
-// import Link from 'next/link';
+import Link from 'next/link';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,7 +15,9 @@ export default function Navbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Home
           </Typography>
+          <Link href="/cart">
           <Button color="inherit">Cart</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
