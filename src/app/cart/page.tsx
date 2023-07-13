@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import './page.scss'
-import { getTotalCartAmount } from '@/redux/features/cartSlice'
+import { clearCart, getTotalCartAmount } from '@/redux/features/cartSlice'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
 import { useAppSelector } from '@/redux/store'
@@ -33,6 +33,8 @@ export default function Cart() {
         localStorage.setItem('order', JSON.stringify(res));
       }
     }
+    alert("下單成功")
+    dispatch(clearCart())
   }
   if (!totalPrice) return (
     <div className="cart checkout">
