@@ -17,16 +17,16 @@ export default function Cart() {
   const handleSubmit = () => {
     //  {order:[{"pizza":1},{"pza":2}]}
     let order = {}
-    for (let key in data) {
+    for (let key in data) { //find what user have submit and put in order
       if (data[key] !== 0) {
         let product = products.find((p) => p.id === key);
         console.log('p', product)
         if (product) (order as any)[product.name] = data[key]
       }
     }
-    if (!localStorage.getItem('order')) {
+    if (!localStorage.getItem('order')) { //if no order in local storage yet, create {order:[order]}
       localStorage.setItem('order', JSON.stringify({ order: [order] }));
-    } else {
+    } else {//push new oder to order histroy 
       let res = localStorage.getItem('order')
       console.log('getItem', res)
       if (res) {
