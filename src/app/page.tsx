@@ -8,7 +8,7 @@ export default function Home() {
         {category.map((cate) => {
           return (
             <div key={cate}>
-              <h2>{cate}</h2>
+              <h1 className={styles.container__h1}>{cate}</h1>
               <div className={styles.productsWarper}>
                 {products.map((product) => {
                   if (product.category === cate) {
