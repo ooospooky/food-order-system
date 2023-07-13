@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function Navbar() {
-  const handlePopupClick =()=>{
+  const handlePopupClick = () => {
     window.open('/history', '_blank', 'width=500,height=500');
   }
   return (
@@ -21,10 +21,7 @@ export default function Navbar() {
             </Typography>
           </Link>
           <div>
-          <Link href="/history">
-              <Button color="inherit">History</Button>
-            </Link>
-            {/* <Button onClick={handlePopupClick} color="inherit">History</Button> */}
+            <Button onClick={handlePopupClick} color="inherit">History</Button>
             <Link href="/cart">
               <Button color="inherit">Cart</Button>
             </Link>
