@@ -14,36 +14,36 @@ export default function Cart() {
   dispatch(getTotalCartAmount())
   const data = useAppSelector((state) => state.cartSliceReducer.value)
   const totalPrice = useAppSelector(state => state.cartSliceReducer.totalPrice);
-  const handleSubmit = ()=>{
-    
+  const handleSubmit = () => {
+    //  {order:[{"pizza":1},{"pza":2}]}
     let order = {}
-    for(let key in data){
-      if(data[key] !== 0){
-        let product =  products.find((p)=>p.id === key);
-        console.log('p',product)
-        if(product) (order as any)[product.name] = data[key]
+    for (let key in data) {
+      if (data[key] !== 0) {
+        let product = products.find((p) => p.id === key);
+        console.log('p', product)
+        if (product) (order as any)[product.name] = data[key]
       }
     }
-    if(!localStorage.getItem('orderNumber')){
-      localStorage.setItem('orderNumber',JSON.stringify({resultNumber:1}));
-      localStorage.setItem('order1', JSON.stringify(order));
-    }else{
-      const {resultNumber}= localStorage.getItem('orderNumber');
-      localStorage.setItem('orderNumber',JSON.stringify({resultNumber:resultNumber+1}));
-      localStorage.setItem(`order${resultNumber+1}`, JSON.stringify(order));
-
+    if (!localStorage.getItem('order')) {
+      localStorage.setItem('order', JSON.stringify({ order: [order] }));
+    } else {
+      let res = localStorage.getItem('order')
+      console.log('getItem', res)
+      if (res) {
+        res = JSON.parse(res);
+        res['order'].push(order)
+        localStorage.setItem('order', JSON.stringify(res));
+      }
     }
-    
-    // localStorage.setItem('order', JSON.stringify(order));
-    const res= localStorage.getItem('order')
-    console.log(res)
+    // const storageData = localStorage.getItem('order')
+    // console.log('storageData', storageData)
   }
-  if(!totalPrice) return(
+  if (!totalPrice) return (
     <div className="cart checkout">
       <h1 className="cart__h1">購物車中沒有任何商品。</h1>
       <Link href="/"><button>繼續購物</button></Link>
     </div>
-  )    
+  )
   return (
     <div className="cart">
       <div>
@@ -62,10 +62,10 @@ export default function Cart() {
         })}
       </div>
       <div className="checkout">
-          <h2 className="cart__h2 "> Subtotal: ${totalPrice}</h2>
-          <Link href="/"><button>繼續購物</button></Link>
-         <button onClick={handleSubmit}>下單</button>
-        </div>
+        <h2 className="cart__h2 "> Subtotal: ${totalPrice}</h2>
+        <Link href="/"><button>繼續購物</button></Link>
+        <button onClick={handleSubmit}>下單</button>
+      </div>
     </div>
 
   )
