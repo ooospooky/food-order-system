@@ -20,23 +20,19 @@ export default function Cart() {
     for (let key in data) { //find what user have submit and put in order
       if (data[key] !== 0) {
         let product = products.find((p) => p.id === key);
-        console.log('p', product)
         if (product) (order as any)[product.name] = data[key]
       }
     }
     if (!localStorage.getItem('order')) { //if no order in local storage yet, create {order:[order]}
       localStorage.setItem('order', JSON.stringify({ order: [order] }));
     } else {//push new oder to order histroy 
-      let res = localStorage.getItem('order')
-      console.log('getItem', res)
+      let res:any = localStorage.getItem('order')
       if (res) {
         res = JSON.parse(res);
         res['order'].push(order)
         localStorage.setItem('order', JSON.stringify(res));
       }
     }
-    // const storageData = localStorage.getItem('order')
-    // console.log('storageData', storageData)
   }
   if (!totalPrice) return (
     <div className="cart checkout">
