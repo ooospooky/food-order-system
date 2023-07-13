@@ -34,7 +34,7 @@ export default function History() {
             {Object.entries(data).map(([itemName, itemCount]) => (
               <div key={itemName} className='order__product'>
                 <p >-- {itemName}</p>
-                <p>x {itemCount as React.ReactNode}</p>
+                <p>x {itemCount}</p>
               </div>
             ))}
           </div>
