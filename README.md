@@ -5,19 +5,19 @@ This is a web application for a food order system. It allows users to browse foo
 
 
 ## My Environment
-- macOS Big Sur
+- macOS Big Sur v11.6
 - Node.js v20.2.0
-- NPM (Node Package Manager)
+- NPM v9.7.2
 - Git
   
 ## Technologies Used
 
-- Next.js
-- React
-- Redux(@reduxjs/toolkit)
-- TypeScript
-- Material-UI
-- Scss
+- Next.js v13.4.9
+- React v18.2.0
+- Redux(@reduxjs/toolkit) v1.9.5
+- TypeScript v5.1.6
+- Material-UI v5.13.7
+- Scss v1.63.6
   
 ## Installation
 
