@@ -18,7 +18,7 @@ export default function Navbar() {
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: '#292929' }}>
+      <AppBar position="fixed" sx={{ backgroundColor: '#292929' }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Link href="/" >
             <Typography variant="h6" component="div">
@@ -32,7 +32,7 @@ export default function Navbar() {
             </Link> */}
             <Link href="/cart">
               <Badge badgeContent={cartQuatitiy} color="primary" >
-                <ShoppingCartIcon sx={{ width: "25px", height: "25px" }} />
+                <ShoppingCartIcon sx={{ width: "25px", height: "25px",marginLeft:"20px" }} />
               </Badge>
             </Link>
           </div>
