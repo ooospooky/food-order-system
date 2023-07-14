@@ -5,7 +5,7 @@ This is a web application for a food order system. It allows users to browse foo
 
 
 ## My Environment
-
+- macOS Big Sur
 - Node.js v20.2.0
 - NPM (Node Package Manager)
 - Git
