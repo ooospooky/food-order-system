@@ -35,7 +35,7 @@ This is a web application for a food order system. It allows users to browse foo
    ```
    npm run dev
    ```
-6. Open your web browser and visit `http://localhost:3000` to access the application.
+4. Open your web browser and visit `http://localhost:3000` to access the application.
 
 ## Features
 
