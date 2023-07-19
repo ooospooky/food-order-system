@@ -3,21 +3,21 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding:7rem 6rem 3rem 6rem;
+  padding: 7rem 6rem 3rem 6rem;
   min-height: 100vh;
 }
 
-.container{
-  &__h1{
+.container {
+  &__h1 {
     font-size: 4rem;
     text-align: center;
-    margin:0;
+    margin: 0;
   }
 }
-.productsWarper{
-    display:flex;
-    gap:1rem;    
-    @media(max-width:600px) {
-      flex-direction: column;
-    }
+.productsWarper {
+  display: flex;
+  gap: 1rem;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 }
