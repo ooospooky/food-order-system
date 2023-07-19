@@ -41,7 +41,7 @@ export default function Cart() {
   }
   if (!totalPrice) return (
     <div className="cart checkout">
-      <h1 className="cart__h1">購物車中沒有任何商品。</h1>
+      <h1 className="cart__h1">購物車中沒有任何商品</h1>
       <Link href="/"><button>繼續購物</button></Link>
     </div>
   )
