@@ -16,22 +16,35 @@
   width: 700px;
   height: 250px;
   display: flex;
-
   align-items: center;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
   margin: 1rem;
+  @media (max-width: 750px) {
+    width: 500px;
+  }
+  @media (max-width: 550px) {
+    width: 400px;
+  }
 }
 
 .cartItem img {
   width: 200px;
   margin-left: 2rem;
   margin-right: 2rem;
+  @media (max-width: 550px) {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .cartItem .description {
   width: 100%;
   font-size: 30px;
+  @media (max-width: 550px) {
+    width: 50%;
+    font-size: 22px;
+  }
 }
 
 .countHandler input {
