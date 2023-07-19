@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import './page.scss'
 import { clearCart, getTotalCartAmount } from '@/redux/features/cartSlice'
@@ -11,9 +11,12 @@ import { products } from '../components/products'
 import { CartItem } from '../components/cartItem'
 export default function Cart() {
   const dispatch = useDispatch<AppDispatch>()
-  dispatch(getTotalCartAmount())
   const data = useAppSelector((state) => state.cartSliceReducer.value)
   const totalPrice = useAppSelector(state => state.cartSliceReducer.totalPrice);
+  useEffect(() => {
+    dispatch(getTotalCartAmount());
+  }, []);
+
   const handleSubmit = () => {
     //  {order:[{"pizza":1},{"pza":2}]}
     let order = {}
@@ -26,7 +29,7 @@ export default function Cart() {
     if (!localStorage.getItem('order')) { //if no order in local storage yet, create {order:[order]}
       localStorage.setItem('order', JSON.stringify({ order: [order] }));
     } else {//push new oder to order histroy 
-      let res:any = localStorage.getItem('order')
+      let res: any = localStorage.getItem('order')
       if (res) {
         res = JSON.parse(res);
         res['order'].push(order)
